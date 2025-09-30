@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Espace Professeur · Réunions parents-profs</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <div class="sidebar-backdrop" data-open="false"></div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="var(--primary)" opacity="0.85"></circle>
+            <path d="M8 12l2 2 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>Pronote+ Prof</span>
+          <button class="btn btn--ghost" data-action="close-sidebar">Fermer</button>
+        </div>
+        <nav class="sidebar__nav">
+          <a href="prof-index.html">Tableau de bord</a>
+          <a href="prof-devoirs.html">Cahier de texte</a>
+          <a href="prof-notes.html">Notes</a>
+          <a href="prof-competences.html">Compétences</a>
+          <a href="prof-presences.html">Présences</a>
+          <a href="prof-edt.html">Emploi du temps</a>
+          <a href="prof-messages.html">Messagerie</a>
+          <a href="prof-documents.html">Documents</a>
+          <a href="prof-reunions.html" aria-current="page">Réunions parents-profs</a>
+        </nav>
+        <div class="sidebar__footer">
+          <span>Connecté en tant que <strong data-user-name>Mme Martin</strong></span>
+          <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span data-theme-label>Thème : Océan</span></button>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button class="btn btn--ghost" data-action="open-sidebar">Menu</button>
+            <div class="topbar__search">
+              <label class="visually-hidden" for="search">Rechercher</label>
+              <input id="search" type="search" placeholder="Rechercher un parent" />
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5" /><line x1="20" y1="20" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="1.5" /></svg>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span data-theme-label>Thème : Océan</span></button>
+            <div class="topbar__avatar">
+              <img src="https://api.dicebear.com/7.x/initials/svg?seed=Prof" alt="Avatar" />
+              <span data-user-name>Mme Martin</span>
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="page-header">
+            <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+              <a href="prof-index.html">Accueil</a>
+              <span aria-hidden="true">›</span>
+              <span>Réunions parents-profs</span>
+            </nav>
+            <h1>Organisation des créneaux</h1>
+            <p>Générez des créneaux de 10 minutes, visualisez les réservations et exportez le planning.</p>
+          </div>
+          <section class="section-grid section-grid--two">
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Génération</h2>
+              </header>
+              <form data-slot-form>
+                <div class="field">
+                  <label class="field__label" for="date">Date</label>
+                  <input id="date" name="date" type="date" required />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="debut">Début</label>
+                  <input id="debut" name="debut" type="time" required />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="nombre">Nombre de créneaux</label>
+                  <input id="nombre" name="nombre" type="number" value="6" min="1" max="20" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="classe">Classe</label>
+                  <select id="classe" name="classe">
+                    <option value="5A">5A</option>
+                    <option value="5B">5B</option>
+                  </select>
+                </div>
+                <button class="btn btn--primary" type="submit">Générer</button>
+              </form>
+            </article>
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Planning</h2>
+                <div class="inline-actions">
+                  <button class="btn btn--ghost" data-slot-export>Exporter CSV</button>
+                  <button class="btn btn--primary" data-slot-pdf>Exporter PDF</button>
+                </div>
+              </header>
+              <div data-slot-list class="section-grid" aria-live="polite"></div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="assets/js/util.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/prof-reunions.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "edt-1",
+    "matiere": "Mathématiques",
+    "classe": "5A",
+    "salle": "205",
+    "debut": "2024-03-25T09:00:00",
+    "fin": "2024-03-25T10:00:00",
+    "position": { "start": 2, "end": 4 }
+  },
+  {
+    "id": "edt-2",
+    "matiere": "Mathématiques",
+    "classe": "5B",
+    "salle": "207",
+    "debut": "2024-03-25T11:00:00",
+    "fin": "2024-03-25T12:00:00",
+    "position": { "start": 5, "end": 7 }
+  }
+]

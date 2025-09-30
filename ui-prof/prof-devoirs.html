@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Espace Professeur · Cahier de texte</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <div class="sidebar-backdrop" data-open="false" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navigation principale">
+        <div class="sidebar__logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="var(--primary)" opacity="0.85" />
+            <path d="M8 12l2 2 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Pronote+ Prof</span>
+          <button class="btn btn--ghost" data-action="close-sidebar">Fermer</button>
+        </div>
+        <nav class="sidebar__nav">
+          <a href="prof-index.html">Tableau de bord</a>
+          <a href="prof-devoirs.html" aria-current="page">Cahier de texte</a>
+          <a href="prof-notes.html">Notes</a>
+          <a href="prof-competences.html">Compétences</a>
+          <a href="prof-presences.html">Présences</a>
+          <a href="prof-edt.html">Emploi du temps</a>
+          <a href="prof-messages.html">Messagerie</a>
+          <a href="prof-documents.html">Documents</a>
+          <a href="prof-reunions.html">Réunions parents-profs</a>
+        </nav>
+        <div class="sidebar__footer">
+          <span>Connecté en tant que <strong data-user-name>Mme Martin</strong></span>
+          <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span data-theme-label>Thème : Océan</span></button>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button class="btn btn--ghost" data-action="open-sidebar">Menu</button>
+            <div class="topbar__search">
+              <label class="visually-hidden" for="search">Rechercher</label>
+              <input id="search" type="search" placeholder="Rechercher un devoir" />
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5" /><line x1="20" y1="20" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="1.5" /></svg>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span data-theme-label>Thème : Océan</span></button>
+            <div class="topbar__avatar">
+              <img src="https://api.dicebear.com/7.x/initials/svg?seed=Prof" alt="Avatar" loading="lazy" decoding="async" />
+              <span data-user-name>Mme Martin</span>
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="page-header">
+            <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+              <a href="prof-index.html">Accueil</a>
+              <span aria-hidden="true">›</span>
+              <span>Cahier de texte</span>
+            </nav>
+            <h1>Gestion des devoirs</h1>
+            <p>Créez vos devoirs, suivez les remises et signalez les éventuels plagiats.</p>
+          </div>
+          <section class="card">
+            <header class="card__header">
+              <h2 class="card__title">Filtres</h2>
+              <div class="inline-actions">
+                <select data-filter-classe aria-label="Filtrer par classe">
+                  <option value="all">Toutes les classes</option>
+                  <option value="5A">5A</option>
+                  <option value="5B">5B</option>
+                </select>
+                <select data-filter-statut aria-label="Filtrer par statut">
+                  <option value="all">Tous les statuts</option>
+                  <option value="open">Ouvert</option>
+                  <option value="closed">Clôturé</option>
+                </select>
+                <button class="btn btn--primary" data-modal-target="modal-devoir">Nouveau devoir</button>
+                <button class="btn btn--ghost" data-export-remises>Exporter remises (CSV)</button>
+              </div>
+            </header>
+            <div data-devoir-list class="section-grid section-grid--two" aria-live="polite"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal" id="modal-devoir" role="dialog" aria-modal="true" aria-labelledby="modal-devoir-title">
+      <div class="modal__dialog">
+        <header class="card__header">
+          <h2 id="modal-devoir-title">Créer un devoir</h2>
+          <button class="btn btn--ghost" data-modal-close>Fermer</button>
+        </header>
+        <form data-create-devoir>
+          <div class="field">
+            <label class="field__label" for="titre">Titre</label>
+            <input id="titre" name="titre" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="classe">Classe</label>
+            <select id="classe" name="classe" required>
+              <option value="5A">5A</option>
+              <option value="5B">5B</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="dateRendu">Date de rendu</label>
+            <input id="dateRendu" name="dateRendu" type="date" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="consigne">Consignes</label>
+            <textarea id="consigne" name="consigne" data-editor="markdown" placeholder="Consignes markdown léger"></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="piece">Pièces jointes</label>
+            <input id="piece" name="piece" type="file" multiple />
+          </div>
+          <div class="switch">
+            <input type="checkbox" id="visibilite" name="visibilite" checked />
+            <label for="visibilite">Visible pour les élèves</label>
+          </div>
+          <button class="btn btn--primary" type="submit">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-remises" role="dialog" aria-modal="true" aria-labelledby="modal-remises-title">
+      <div class="modal__dialog">
+        <header class="card__header">
+          <h2 id="modal-remises-title">Remises des élèves</h2>
+          <button class="btn btn--ghost" data-modal-close>Fermer</button>
+        </header>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Élève</th>
+              <th scope="col">Statut</th>
+              <th scope="col">Note</th>
+              <th scope="col">Commentaire</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/util.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/prof-devoirs.js"></script>
+  </body>
+</html>

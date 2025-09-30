@@ -1,0 +1,47 @@
+[
+  {
+    "subject": "Mathématiques",
+    "title": "Contrôle fonctions",
+    "value": 15,
+    "scale": 20,
+    "coefficient": 2,
+    "date": "2024-03-20",
+    "appreciation": "Bon travail, continue."
+  },
+  {
+    "subject": "Français",
+    "title": "Lecture analytique",
+    "value": 17,
+    "scale": 20,
+    "coefficient": 1,
+    "date": "2024-03-15",
+    "appreciation": "Analyse pertinente."
+  },
+  {
+    "subject": "SVT",
+    "title": "TP respiration",
+    "value": 18,
+    "scale": 20,
+    "coefficient": 1,
+    "date": "2024-03-28",
+    "appreciation": "Excellente restitution."
+  },
+  {
+    "subject": "Histoire",
+    "title": "Quiz Révolution",
+    "value": 12,
+    "scale": 20,
+    "coefficient": 1,
+    "date": "2024-03-05",
+    "appreciation": "Revoir les dates clés."
+  },
+  {
+    "subject": "Anglais",
+    "title": "Oral",
+    "value": 16,
+    "scale": 20,
+    "coefficient": 1,
+    "date": "2024-03-27",
+    "appreciation": "Prononciation claire."
+  }
+]

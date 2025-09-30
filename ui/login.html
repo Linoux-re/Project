@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion – Pronote UI</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: var(--space-4);
+        background: var(--bg);
+        color: var(--fg);
+      }
+      .login-card {
+        width: min(420px, 95vw);
+        border: var(--border);
+        box-shadow: var(--shadow-2);
+      }
+      .login-brand {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        font-weight: 600;
+      }
+      .login-brand svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        fill: var(--primary);
+      }
+      .lock-icon {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" focusable="false" style="position: absolute; width: 0; height: 0">
+      <use href="assets/icons/ui-sprite.svg#icon-lock"></use>
+    </svg>
+    <main id="main">
+      <article class="card login-card">
+        <header class="card__header">
+          <div class="login-brand">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-lock"></use></svg>
+            <span>Pronote UI sécurisé</span>
+          </div>
+          <button class="btn btn--ghost" data-theme-toggle type="button" aria-label="Changer de thème">
+          <span data-theme-label>Thème : Océan</span>
+          </button>
+        </header>
+        <p id="phishing-hint" class="text-muted" aria-live="polite"></p>
+        <form id="login-form" novalidate autocomplete="on">
+          <div class="form-row">
+            <label for="email">Adresse e-mail</label>
+            <div class="input-group">
+              <input
+                class="input"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="username"
+                inputmode="email"
+                required
+                aria-describedby="email-help email-error"
+              />
+            </div>
+            <p id="email-help" class="helper-text">Utilisez l'adresse fournie par l'établissement.</p>
+            <p id="email-error" class="error-text" hidden>Adresse e-mail invalide.</p>
+          </div>
+          <div class="form-row">
+            <label for="password">Mot de passe</label>
+            <div class="input-group">
+              <input
+                class="input"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="10"
+                required
+                aria-describedby="password-policy password-error caps-indicator"
+              />
+              <button type="button" class="btn btn--ghost" id="password-toggle" aria-pressed="false">Afficher</button>
+            </div>
+            <p id="password-policy" class="password-policy">Minimum 10 caractères.</p>
+            <p id="caps-indicator" class="input-caps" hidden>Majuscules activées</p>
+            <p id="password-error" class="error-text" hidden>Mot de passe trop court.</p>
+          </div>
+          <div class="form-row--inline" style="justify-content: flex-start; gap: var(--space-2)">
+            <label class="checkbox">
+              <input type="checkbox" name="remember" />
+              <span>Rester connecté·e</span>
+            </label>
+            <a class="btn btn--ghost" href="#" data-toast="Lien de réinitialisation envoyé" data-toast-type="success">Mot de passe oublié ?</a>
+          </div>
+          <div id="lockout-banner" class="badge badge--danger" role="alert" hidden>
+            Trop de tentatives. Réessayez dans <span>30s</span>.
+          </div>
+          <button class="btn btn--primary" type="submit">Se connecter</button>
+          <p class="helper-text">Mot de passe temporaire : <code>Pronote2024!</code></p>
+        </form>
+        <footer class="card__footer">
+          <p class="helper-text">Connexion protégée. Code 2FA requis après validation.</p>
+        </footer>
+      </article>
+    </main>
+
+    <div class="modal" id="modal-2fa" role="dialog" aria-modal="true" aria-labelledby="modal-2fa-title" data-open="false">
+      <div class="modal__overlay" data-modal-close="modal-2fa"></div>
+      <div class="modal__content">
+        <header class="modal__header">
+          <h2 id="modal-2fa-title">Code de vérification</h2>
+          <button class="btn btn--ghost" type="button" data-modal-close="modal-2fa" aria-label="Fermer">&times;</button>
+        </header>
+        <p>Entrez le code à 6 chiffres généré par votre application d'authentification.</p>
+        <form id="twofa-form" autocomplete="one-time-code">
+          <div class="form-row">
+            <label for="otp">Code 2FA</label>
+            <input class="input" id="otp" name="otp" type="text" inputmode="numeric" pattern="[0-9]{6}" required aria-describedby="otp-error" />
+            <p id="otp-error" class="error-text" hidden>Code invalide. Utilisez <strong>123456</strong> pour la démo.</p>
+          </div>
+          <button class="btn btn--primary" type="submit">Valider</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+  </body>
+</html>

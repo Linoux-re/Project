@@ -1,0 +1,42 @@
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-fade {
+    transition: opacity 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .anim-fade-in {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .anim-fade-in.show {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hover-raise:hover {
+    transform: translateY(-2px);
+  }
+
+  .anim-toast-enter {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .anim-toast-enter.show {
+    opacity: 1;
+    transform: none;
+  }
+}

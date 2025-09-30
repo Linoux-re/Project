@@ -1,0 +1,23 @@
+{
+  "name": "pronote-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@8.15.5",
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "lint": "pnpm -r run lint",
+    "format": "pnpm -r run format",
+    "test": "pnpm -r run test",
+    "build": "pnpm --filter web build && pnpm --filter api build",
+    "db:push": "pnpm --filter api db:push",
+    "db:seed": "pnpm --filter api db:seed",
+    "analyze": "pnpm --filter web analyze",
+    "lighthouse": "lhci autorun",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2"
+  }
+}

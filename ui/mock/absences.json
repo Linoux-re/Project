@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2024-03-25",
+    "type": "Absence",
+    "motif": "Maladie",
+    "justified": false,
+    "hours": 6
+  },
+  {
+    "date": "2024-03-18",
+    "type": "Retard",
+    "motif": "Transport",
+    "justified": true,
+    "hours": 0.5
+  }
+]

@@ -1,0 +1,66 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: pronote
+      POSTGRES_PASSWORD: pronote
+      POSTGRES_DB: pronote
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+  minio:
+    image: minio/minio:RELEASE.2024-02-17T00-00-00Z
+    command: server /data
+    environment:
+      MINIO_ROOT_USER: pronote
+      MINIO_ROOT_PASSWORD: pronote-secret
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio:/data
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    env_file: .env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - redis
+      - minio
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    env_file: .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  traefik:
+    image: traefik:v3.0
+    command:
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--api.dashboard=true"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+volumes:
+  pgdata:
+  minio:

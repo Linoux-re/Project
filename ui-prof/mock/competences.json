@@ -1,0 +1,35 @@
+[
+  {
+    "id": 101,
+    "classe": "5A",
+    "domaine": "Raisonnement",
+    "libelle": "Résoudre un problème",
+    "evaluations": [
+      { "id": "101-1", "eleve": "Alice Dupont", "niveau": "A" },
+      { "id": "101-2", "eleve": "Benoît Leroy", "niveau": "B" },
+      { "id": "101-3", "eleve": "Camille Martin", "niveau": "C" }
+    ]
+  },
+  {
+    "id": 102,
+    "classe": "5A",
+    "domaine": "Méthodes",
+    "libelle": "Présenter une démarche",
+    "evaluations": [
+      { "id": "102-1", "eleve": "Alice Dupont", "niveau": "B" },
+      { "id": "102-2", "eleve": "Benoît Leroy", "niveau": "C" },
+      { "id": "102-3", "eleve": "Camille Martin", "niveau": "B" }
+    ]
+  },
+  {
+    "id": 201,
+    "classe": "5B",
+    "domaine": "Raisonnement",
+    "libelle": "Résoudre un problème",
+    "evaluations": [
+      { "id": "201-1", "eleve": "David Morel", "niveau": "B" },
+      { "id": "201-2", "eleve": "Emma Girard", "niveau": "A" },
+      { "id": "201-3", "eleve": "Farah Diallo", "niveau": "A" }
+    ]
+  }
+]

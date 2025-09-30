@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Messagerie – Pronote UI</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <style>
+      .messages-layout {
+        display: grid;
+        gap: var(--space-2);
+      }
+      @media (min-width: 900px) {
+        .messages-layout {
+          grid-template-columns: minmax(220px, 280px) 1fr;
+        }
+      }
+      #messages-container {
+        max-height: 60vh;
+        overflow-y: auto;
+        display: grid;
+        gap: var(--space-1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-drawer-backdrop" aria-hidden="true"></div>
+    <aside class="app-sidebar" aria-label="Navigation principale">
+      <div class="app-sidebar__header">
+        <span class="login-brand"><strong>Pronote UI</strong></span>
+        <button class="btn btn--icon" data-sidebar-toggle aria-label="Fermer la navigation">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-close"></use></svg>
+        </button>
+      </div>
+      <nav class="app-sidebar__nav">
+        <div class="nav-section">
+          <p class="nav-section__title">Espace</p>
+          <a class="nav-link" href="dashboard.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-dashboard"></use></svg>
+            Tableau de bord
+          </a>
+          <a class="nav-link" href="edt.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-calendar"></use></svg>
+            Emploi du temps
+          </a>
+          <a class="nav-link" href="devoirs.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-tasks"></use></svg>
+            Cahier de texte
+          </a>
+          <a class="nav-link" href="notes.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-grade"></use></svg>
+            Notes
+          </a>
+          <a class="nav-link" href="absences.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-absent"></use></svg>
+            Absences
+          </a>
+          <a class="nav-link" href="messages.html" aria-current="page">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-mail"></use></svg>
+            Messagerie
+          </a>
+          <a class="nav-link" href="documents.html">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-file"></use></svg>
+            Documents
+          </a>
+        </div>
+      </nav>
+      <footer class="app-footer">© 2024 Collège Horizon</footer>
+    </aside>
+
+    <header class="app-topbar">
+      <div class="app-topbar__left">
+        <button class="btn btn--icon" data-sidebar-toggle aria-label="Ouvrir la navigation">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-menu"></use></svg>
+        </button>
+        <h1 class="card__title">Messagerie interne</h1>
+      </div>
+      <div class="app-topbar__right">
+        <button class="btn btn--ghost" data-theme-toggle type="button" aria-label="Changer de thème">
+          <span data-theme-label>Thème : Océan</span>
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-moon"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main" id="main">
+      <div class="app-content">
+        <section class="messages-layout">
+          <aside class="card" aria-label="Conversations">
+            <header class="card__header">
+              <h2 class="card__title">Conversations</h2>
+            </header>
+            <div id="thread-list" class="grid-responsive" role="listbox" aria-label="Liste des conversations"></div>
+          </aside>
+          <section class="card" aria-live="polite">
+            <header class="card__header">
+              <h2 class="card__title">Messages</h2>
+            </header>
+            <div id="messages-container"></div>
+            <form id="message-form" style="margin-top: var(--space-2)">
+              <label class="visually-hidden" for="content">Votre message</label>
+              <textarea class="input" id="content" name="content" rows="3" placeholder="Écrire un message…" required></textarea>
+              <button class="btn btn--primary" type="submit" style="margin-top: var(--space-1)">Envoyer</button>
+            </form>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/messages.js"></script>
+  </body>
+</html>

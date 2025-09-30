@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "classe": "5A",
+    "titre": "DM Fractions",
+    "consigne": "Résoudre les exercices 5 à 10 page 82.",
+    "dateRendu": "2024-03-27",
+    "plagiat": 0.15,
+    "cloture": false,
+    "eleves": 28,
+    "remises": [
+      { "id": "1-1", "nom": "Alice Dupont", "statut": "rendu", "note": 16 },
+      { "id": "1-2", "nom": "Benoît Leroy", "statut": "retard", "note": null },
+      { "id": "1-3", "nom": "Camille Martin", "statut": "rendu", "note": 14 }
+    ]
+  },
+  {
+    "id": 2,
+    "classe": "5B",
+    "titre": "Contrôle géométrie",
+    "consigne": "Préparer le chapitre 6 + fiche de synthèse.",
+    "dateRendu": "2024-03-29",
+    "plagiat": 0.82,
+    "cloture": false,
+    "eleves": 26,
+    "remises": [
+      { "id": "2-1", "nom": "Emma Girard", "statut": "non rendu", "note": null },
+      { "id": "2-2", "nom": "Farah Diallo", "statut": "rendu", "note": 15 }
+    ]
+  }
+]

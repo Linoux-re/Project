@@ -1,0 +1,20 @@
+{
+  "widgets": {
+    "prochainsCours": [
+      { "title": "Mathématiques", "time": "08:00", "room": "B201", "teacher": "M. Dupont" },
+      { "title": "Histoire", "time": "10:00", "room": "A103", "teacher": "Mme Leroy" }
+    ],
+    "devoirsAfaire": [
+      { "title": "DM n°3", "subject": "Mathématiques", "due": "2024-04-08" },
+      { "title": "Lecture chapitre 5", "subject": "Français", "due": "2024-04-09" }
+    ],
+    "dernieresNotes": [
+      { "subject": "SVT", "value": 18, "scale": 20, "date": "2024-03-28" },
+      { "subject": "Anglais", "value": 16, "scale": 20, "date": "2024-03-27" }
+    ],
+    "notifications": [
+      { "type": "absence", "message": "Absence non justifiée le 25/03" },
+      { "type": "note", "message": "Nouvelle note en Français" }
+    ]
+  }
+}

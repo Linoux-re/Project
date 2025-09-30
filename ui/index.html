@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pronote UI – Démo</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <svg aria-hidden="true" focusable="false" style="display: none">
+      <use href="assets/icons/ui-sprite.svg#icon-dashboard"></use>
+    </svg>
+    <header class="container" style="padding-block: var(--space-4)">
+      <div class="role-banner">
+        <div>
+          <p class="badge">Pronote UI</p>
+          <h1>Choisissez un espace démo</h1>
+          <p class="text-muted">Application statique HTML/CSS/JS – données fictives.</p>
+        </div>
+        <img src="img/placeholders/avatar.svg" alt="" width="120" height="120" loading="lazy" decoding="async" />
+      </div>
+    </header>
+    <main class="container" id="main">
+      <section class="cards-grid" aria-label="Espaces disponibles">
+        <article class="card card--highlight">
+          <header class="card__header">
+            <h2 class="card__title">Élève</h2>
+            <span class="badge badge--soft">Loïc</span>
+          </header>
+          <p>Tableau de bord, emploi du temps, devoirs, notes, messagerie, documents.</p>
+          <a class="btn btn--primary" href="login.html">Accéder</a>
+        </article>
+        <article class="card">
+          <header class="card__header">
+            <h2 class="card__title">Parent</h2>
+            <span class="badge badge--soft">Responsable</span>
+          </header>
+          <p>Justification des absences, messagerie, rendez-vous parents-profs.</p>
+          <a class="btn btn--secondary" href="dashboard.html?role=parent">Voir la démo</a>
+        </article>
+        <article class="card">
+          <header class="card__header">
+            <h2 class="card__title">Professeur</h2>
+            <span class="badge badge--soft">Publication</span>
+          </header>
+          <p>Création de devoirs, saisie des notes, messagerie ciblée, documents de classe.</p>
+          <a class="btn btn--secondary" href="dashboard.html?role=prof">Voir la démo</a>
+        </article>
+        <article class="card">
+          <header class="card__header">
+            <h2 class="card__title">Vie scolaire</h2>
+            <span class="badge badge--soft">Suivi</span>
+          </header>
+          <p>Gestion absences/retards, convocations, notifications parents.</p>
+          <a class="btn btn--secondary" href="absences.html?role=vie-scolaire">Voir la démo</a>
+        </article>
+        <article class="card">
+          <header class="card__header">
+            <h2 class="card__title">Administration</h2>
+            <span class="badge badge--soft">Supervision</span>
+          </header>
+          <p>Gestion des comptes, import/export, paramètres établissement.</p>
+          <a class="btn btn--secondary" href="admin.html">Voir la démo</a>
+        </article>
+      </section>
+    </main>
+    <footer class="container" style="padding-block: var(--space-4)">
+      <p class="text-muted">Conçu pour la démo – Aucun traitement réel de données.</p>
+    </footer>
+    <script type="module" src="assets/js/app.js"></script>
+  </body>
+</html>

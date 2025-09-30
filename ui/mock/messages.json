@@ -1,0 +1,33 @@
+[
+  {
+    "id": "thread-1",
+    "subject": "Sortie pédagogique",
+    "participants": ["Mme Leroy", "Classe 3A"],
+    "unread": true,
+    "messages": [
+      {
+        "sender": "Mme Leroy",
+        "sentAt": "2024-03-29T17:35:00",
+        "content": "Bonjour, n'oubliez pas l'autorisation pour la sortie de jeudi."
+      },
+      {
+        "sender": "Loïc",
+        "sentAt": "2024-03-29T18:05:00",
+        "content": "Merci, c'est envoyé !"
+      }
+    ]
+  },
+  {
+    "id": "thread-2",
+    "subject": "Suivi devoirs",
+    "participants": ["M. Dupont"],
+    "unread": false,
+    "messages": [
+      {
+        "sender": "M. Dupont",
+        "sentAt": "2024-03-27T12:15:00",
+        "content": "Pensez à revoir la notion de fonction pour le prochain cours."
+      }
+    ]
+  }
+]

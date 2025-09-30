@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Espace Professeur · Tableau de bord</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <div class="sidebar-backdrop" data-open="false" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navigation principale">
+        <div class="sidebar__logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="var(--primary)" opacity="0.85" />
+            <path d="M8 12l2 2 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Pronote+ Prof</span>
+          <button class="btn btn--ghost" data-action="close-sidebar">Fermer</button>
+        </div>
+        <nav class="sidebar__nav">
+          <a href="prof-index.html" aria-current="page" data-shortcut="dashboard">Tableau de bord</a>
+          <a href="prof-devoirs.html">Cahier de texte</a>
+          <a href="prof-notes.html">Notes</a>
+          <a href="prof-competences.html">Compétences</a>
+          <a href="prof-presences.html">Présences</a>
+          <a href="prof-edt.html" data-shortcut="edt">Emploi du temps</a>
+          <a href="prof-messages.html">Messagerie</a>
+          <a href="prof-documents.html">Documents</a>
+          <a href="prof-reunions.html">Réunions parents-profs</a>
+        </nav>
+        <div class="sidebar__footer">
+          <span>Connecté en tant que <strong data-user-name>Mme Martin</strong></span>
+          <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span data-theme-label>Thème : Océan</span></button>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button class="btn btn--ghost" data-action="open-sidebar">Menu</button>
+            <div class="topbar__search">
+              <label class="visually-hidden" for="search">Rechercher</label>
+              <input id="search" type="search" placeholder="Rechercher" />
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5" /><line x1="20" y1="20" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="1.5" /></svg>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <button class="btn btn--ghost" data-action="toggle-theme" type="button" aria-label="Changer de thème"><span class="visually-hidden" data-theme-label>Thème : Océan</span><span aria-hidden="true">🌗</span></button>
+            <div class="topbar__avatar">
+              <img src="https://api.dicebear.com/7.x/initials/svg?seed=Prof" alt="Avatar" loading="lazy" decoding="async" />
+              <span data-user-name>Mme Martin</span>
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="page-header">
+            <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+              <a href="prof-index.html">Accueil</a>
+              <span aria-hidden="true">›</span>
+              <span>Tableau de bord</span>
+            </nav>
+            <h1>Tableau de bord professeur</h1>
+            <p>Visualisez vos prochains cours, tâches urgentes et indicateurs de classe.</p>
+          </div>
+          <section class="section-grid section-grid--two">
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Prochain cours</h2>
+                <button class="btn btn--ghost" onclick="window.location='prof-edt.html'">Voir l'EDT</button>
+              </header>
+              <div data-widget="next-course" class="stat-card"></div>
+            </article>
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Actions rapides</h2>
+              </header>
+              <div class="inline-actions">
+                <a class="btn btn--primary" href="prof-devoirs.html">Créer un devoir</a>
+                <a class="btn btn--ghost" href="prof-notes.html">Saisir des notes</a>
+                <a class="btn btn--ghost" href="prof-presences.html">Prendre l'appel</a>
+              </div>
+            </article>
+          </section>
+          <section class="section-grid section-grid--two">
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Devoirs à corriger</h2>
+              </header>
+              <ul data-widget="devoirs-corriger"></ul>
+            </article>
+            <article class="card">
+              <header class="card__header">
+                <h2 class="card__title">Copies non rendues</h2>
+              </header>
+              <ul data-widget="copies-non-rendues"></ul>
+            </article>
+          </section>
+          <section>
+            <h2>Performances des classes</h2>
+            <div data-widget="moyennes-classes" class="stat-grid"></div>
+            <svg class="chart-sparkline" data-spark="notes" role="img" aria-label="Distribution des notes"></svg>
+          </section>
+          <section>
+            <h2>Taux de présence</h2>
+            <svg class="chart-sparkline" data-spark="presence" role="img" aria-label="Taux de présence"></svg>
+          </section>
+          <section class="card">
+            <header class="card__header">
+              <h2 class="card__title">Notifications</h2>
+            </header>
+            <ul data-widget="notifications"></ul>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="assets/js/util.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/prof-dashboard.js"></script>
+  </body>
+</html>
