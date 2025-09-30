@@ -1,0 +1,20 @@
+[
+  {
+    "id": "doc-1",
+    "title": "Planning semaine A",
+    "owner": "Vie scolaire",
+    "type": "PDF",
+    "description": "Planning des activités de la semaine A",
+    "url": "./documents/planningA.pdf",
+    "tags": ["Planning", "Semaine A"]
+  },
+  {
+    "id": "doc-2",
+    "title": "Cours de SVT",
+    "owner": "M. Girard",
+    "type": "PDF",
+    "description": "Diaporama du cours sur la respiration",
+    "url": "./documents/svt-respiration.pdf",
+    "tags": ["SVT", "Cours"]
+  }
+]

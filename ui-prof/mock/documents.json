@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "classe": "5A",
+    "titre": "Fiche exercices fractions",
+    "tags": ["fractions", "entrainement"],
+    "type": "PDF"
+  },
+  {
+    "id": 2,
+    "classe": "5A",
+    "titre": "Correction DM",
+    "tags": ["correction"],
+    "type": "PDF"
+  },
+  {
+    "id": 3,
+    "classe": "5B",
+    "titre": "Synthèse géométrie",
+    "tags": ["cours", "géométrie"],
+    "type": "Présentation"
+  }
+]

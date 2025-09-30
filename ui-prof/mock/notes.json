@@ -1,0 +1,8 @@
+[
+  { "eleveId": 1, "eleve": "Alice Dupont", "classe": "5A", "note": 16, "coefficient": 1.0, "commentaire": "Excellent" },
+  { "eleveId": 2, "eleve": "Benoît Leroy", "classe": "5A", "note": 12.5, "coefficient": 1.2, "commentaire": "Bon travail" },
+  { "eleveId": 3, "eleve": "Camille Martin", "classe": "5A", "note": 14, "coefficient": 1.0, "commentaire": "Peut approfondir" },
+  { "eleveId": 4, "eleve": "David Morel", "classe": "5B", "note": 11, "coefficient": 1.0, "commentaire": "Doit réviser" },
+  { "eleveId": 5, "eleve": "Emma Girard", "classe": "5B", "note": 13.5, "coefficient": 1.1, "commentaire": "Progrès constants" },
+  { "eleveId": 6, "eleve": "Farah Diallo", "classe": "5B", "note": 15.5, "coefficient": 1.0, "commentaire": "Très bien" }
+]

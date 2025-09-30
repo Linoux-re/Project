@@ -1,0 +1,42 @@
+[
+  {
+    "id": "evt-1",
+    "title": "Mathématiques",
+    "teacher": "M. Dupont",
+    "room": "B201",
+    "class": "3A",
+    "day": "Lun",
+    "start": "2024-04-01T08:00:00",
+    "end": "2024-04-01T09:30:00"
+  },
+  {
+    "id": "evt-2",
+    "title": "Français",
+    "teacher": "Mme Bernard",
+    "room": "A104",
+    "class": "3A",
+    "day": "Lun",
+    "start": "2024-04-01T10:00:00",
+    "end": "2024-04-01T11:00:00"
+  },
+  {
+    "id": "evt-3",
+    "title": "SVT",
+    "teacher": "M. Girard",
+    "room": "Lab1",
+    "class": "3A",
+    "day": "Mar",
+    "start": "2024-04-02T09:00:00",
+    "end": "2024-04-02T10:30:00"
+  },
+  {
+    "id": "evt-4",
+    "title": "Anglais",
+    "teacher": "Mme Wilson",
+    "room": "B105",
+    "class": "3A",
+    "day": "Mer",
+    "start": "2024-04-03T11:00:00",
+    "end": "2024-04-03T12:00:00"
+  }
+]

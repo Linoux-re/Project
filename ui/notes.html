@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes – Pronote UI</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/forms.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <div class="app-drawer-backdrop" aria-hidden="true"></div>
+    <aside class="app-sidebar" aria-label="Navigation principale">
+      <div class="app-sidebar__header">
+        <span class="login-brand"><strong>Pronote UI</strong></span>
+        <button class="btn btn--icon" data-sidebar-toggle aria-label="Fermer la navigation">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-close"></use></svg>
+        </button>
+      </div>
+      <nav class="app-sidebar__nav">
+        <div class="nav-section">
+          <p class="nav-section__title">Espace</p>
+          <a class="nav-link" href="dashboard.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-dashboard"></use></svg>
+            Tableau de bord
+          </a>
+          <a class="nav-link" href="edt.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-calendar"></use></svg>
+            Emploi du temps
+          </a>
+          <a class="nav-link" href="devoirs.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-tasks"></use></svg>
+            Cahier de texte
+          </a>
+          <a class="nav-link" href="notes.html" aria-current="page">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-grade"></use></svg>
+            Notes
+          </a>
+          <a class="nav-link" href="absences.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-absent"></use></svg>
+            Absences
+          </a>
+          <a class="nav-link" href="messages.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-mail"></use></svg>
+            Messagerie
+          </a>
+          <a class="nav-link" href="documents.html">
+            <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-file"></use></svg>
+            Documents
+          </a>
+        </div>
+      </nav>
+      <footer class="app-footer">© 2024 Collège Horizon</footer>
+    </aside>
+
+    <header class="app-topbar">
+      <div class="app-topbar__left">
+        <button class="btn btn--icon" data-sidebar-toggle aria-label="Ouvrir la navigation">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-menu"></use></svg>
+        </button>
+        <h1 class="card__title">Notes et bulletins</h1>
+      </div>
+      <div class="app-topbar__right">
+        <button class="btn btn--ghost" data-theme-toggle aria-pressed="false" type="button" aria-label="Basculer le thème">
+          <svg aria-hidden="true"><use href="assets/icons/ui-sprite.svg#icon-moon"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main" id="main">
+      <div class="app-content">
+        <section class="card">
+          <header class="card__header">
+            <h2 class="card__title">Synthèse</h2>
+            <div class="stat-pair">
+              <span>Moyenne générale</span>
+              <strong id="notes-average">--</strong>
+            </div>
+          </header>
+          <div class="table-wrapper" data-collapse="true">
+            <table aria-describedby="notes-help">
+              <thead>
+                <tr>
+                  <th scope="col"><button data-sort="date" aria-sort="none">Date</button></th>
+                  <th scope="col"><button data-sort="subject" aria-sort="none">Matière</button></th>
+                  <th scope="col"><button data-sort="title" aria-sort="none">Intitulé</button></th>
+                  <th scope="col"><button data-sort="value" aria-sort="none">Note</button></th>
+                  <th scope="col"><button data-sort="coefficient" aria-sort="none">Coef.</button></th>
+                  <th scope="col">Appréciation</th>
+                </tr>
+              </thead>
+              <tbody id="notes-body"></tbody>
+            </table>
+          </div>
+          <p id="notes-help" class="helper-text">Cliquez sur un en-tête pour trier. Pagination client.</p>
+          <div class="pagination" id="notes-pagination"></div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/notes.js"></script>
+  </body>
+</html>
