@@ -1,0 +1,24 @@
+[
+  {
+    "id": "d-1",
+    "title": "DM n°3",
+    "class": "3A",
+    "subject": "Mathématiques",
+    "instructions": "Résoudre les exercices 5 à 8 page 124.",
+    "dueDate": "2024-04-08",
+    "status": "à faire",
+    "resources": [
+      { "label": "Énoncé", "url": "./documents/dm3.pdf" }
+    ]
+  },
+  {
+    "id": "d-2",
+    "title": "Lecture chapitre 5",
+    "class": "3A",
+    "subject": "Français",
+    "instructions": "Lire le chapitre 5 et préparer une synthèse.",
+    "dueDate": "2024-04-09",
+    "status": "rendu",
+    "resources": []
+  }
+]

@@ -1,3 +1,7 @@
-__pycache__/
-*.py[cod]
-pronote.json
+node_modules
+pnpm-lock.yaml
+.env
+/apps/*/node_modules
+/dist
+/.next
+Dockerfile

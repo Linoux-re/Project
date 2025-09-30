@@ -1,0 +1,334 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  STAFF_VIE_SCOLAIRE
+  PROF
+  ELEVE
+  PARENT
+}
+
+enum StatutRemise {
+  BROUILLON
+  RENDU
+  EN_RETARD
+  NOTE
+}
+
+enum NiveauCompetence {
+  A
+  B
+  C
+  D
+}
+
+enum TypeDevoir {
+  EXERCICE
+  DM
+}
+
+enum AudienceActualite {
+  ALL
+  PARENTS
+  PROFS
+  ELEVES
+}
+
+model User {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  passwordHash   String
+  firstName      String
+  lastName       String
+  phone          String?
+  role           Role
+  status         String   @default("ACTIVE")
+  lastLoginAt    DateTime?
+  twoFactorSecret String?
+  eleve          Eleve?
+  parent         Parent?
+  professeur     Professeur?
+  staff          StaffVieScolaire?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  notifications  Notification[]
+  documents      Document[]
+  messagesSent   Message[]       @relation("MessageSender")
+  messagesLu     MessageLu[]
+  auditLogs      JournalAudit[]
+}
+
+model Eleve {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id])
+  ine            String?
+  dateNaissance  DateTime
+  classeId       String?
+  classe         Classe?  @relation(fields: [classeId], references: [id])
+  tuteurs        Parent[] @relation("ParentEnfants")
+  remises        RemiseDevoir[]
+  notes          Note[]
+  competences    EvaluationCompetence[]
+  absences       Absence[]
+  retards        Retard[]
+  sanctions      Sanction[]
+}
+
+model Parent {
+  id        String  @id @default(cuid())
+  userId    String  @unique
+  user      User    @relation(fields: [userId], references: [id])
+  enfants   Eleve[] @relation("ParentEnfants")
+}
+
+model Professeur {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  matieres  Matiere[]
+  classes   Classe[] @relation("ProfPrincipal")
+  cours     Cours[]
+}
+
+model StaffVieScolaire {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Classe {
+  id              String        @id @default(cuid())
+  libelle         String
+  niveau          String
+  anneeScolaire   String
+  profPrincipalId String?
+  profPrincipal   Professeur?   @relation("ProfPrincipal", fields: [profPrincipalId], references: [id])
+  eleves          Eleve[]
+  cours           Cours[]
+  reunions        ReunionPP[]
+  documents       Document[]
+}
+
+model Matiere {
+  id          String   @id @default(cuid())
+  libelle     String
+  coefficient Float   @default(1)
+  couleur     String
+  professeurs Professeur[]
+  cours       Cours[]
+  notes       Note[]
+  competences EvaluationCompetence[]
+}
+
+model Salle {
+  id        String @id @default(cuid())
+  nom       String
+  capacite  Int
+  cours     Cours[]
+}
+
+model Cours {
+  id           String     @id @default(cuid())
+  classeId     String
+  classe       Classe     @relation(fields: [classeId], references: [id])
+  matiereId    String
+  matiere      Matiere    @relation(fields: [matiereId], references: [id])
+  professeurId String
+  professeur   Professeur @relation(fields: [professeurId], references: [id])
+  salleId      String?
+  salle        Salle?     @relation(fields: [salleId], references: [id])
+  debut        DateTime
+  fin          DateTime
+  recurr       String?
+  devoirs      Devoir[]
+}
+
+model Devoir {
+  id           String         @id @default(cuid())
+  coursId      String
+  cours        Cours          @relation(fields: [coursId], references: [id])
+  titre        String
+  consignes    String
+  ressources   Json?
+  dateRendu    DateTime
+  type         TypeDevoir
+  visibilite   String @default("CLASSE")
+  remises      RemiseDevoir[]
+}
+
+model RemiseDevoir {
+  id            String        @id @default(cuid())
+  devoirId      String
+  devoir        Devoir        @relation(fields: [devoirId], references: [id])
+  eleveId       String
+  eleve         Eleve         @relation(fields: [eleveId], references: [id])
+  statut        StatutRemise
+  soumissionUrl String?
+  note          Float?
+  appreciation  String?
+  renduAt       DateTime?
+}
+
+model Note {
+  id          String   @id @default(cuid())
+  eleveId     String
+  eleve       Eleve    @relation(fields: [eleveId], references: [id])
+  matiereId   String
+  matiere     Matiere  @relation(fields: [matiereId], references: [id])
+  titre       String
+  valeur      Float
+  bareme      Float
+  coefficient Float @default(1)
+  date        DateTime
+  appreciation String?
+}
+
+model Competence {
+  id      String @id @default(cuid())
+  libelle String
+  code    String
+  domaine String
+  evaluations EvaluationCompetence[]
+}
+
+model EvaluationCompetence {
+  id           String            @id @default(cuid())
+  eleveId      String
+  eleve        Eleve             @relation(fields: [eleveId], references: [id])
+  competenceId String
+  competence   Competence        @relation(fields: [competenceId], references: [id])
+  matiereId    String
+  matiere      Matiere           @relation(fields: [matiereId], references: [id])
+  niveau       NiveauCompetence
+  date         DateTime
+}
+
+model Absence {
+  id             String @id @default(cuid())
+  eleveId        String
+  eleve          Eleve  @relation(fields: [eleveId], references: [id])
+  dateDebut      DateTime
+  dateFin        DateTime
+  motif          String
+  justifie       Boolean @default(false)
+  piecesJointes  Json?
+  notifications  Notification[]
+}
+
+model Retard {
+  id        String @id @default(cuid())
+  eleveId   String
+  eleve     Eleve  @relation(fields: [eleveId], references: [id])
+  dateHeure DateTime
+  minutes   Int
+  motif     String?
+}
+
+model Sanction {
+  id          String @id @default(cuid())
+  eleveId     String
+  eleve       Eleve  @relation(fields: [eleveId], references: [id])
+  type        String
+  description String
+  date        DateTime
+  echeance    DateTime?
+}
+
+model Message {
+  id          String @id @default(cuid())
+  senderId    String
+  sender      User   @relation("MessageSender", fields: [senderId], references: [id])
+  objet       String
+  contenu     String
+  files       Json?
+  createdAt   DateTime @default(now())
+  recipients  MessageRecipient[]
+  luPar       MessageLu[]
+}
+
+model MessageRecipient {
+  id        String @id @default(cuid())
+  messageId String
+  message   Message @relation(fields: [messageId], references: [id])
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+model MessageLu {
+  id        String @id @default(cuid())
+  messageId String
+  message   Message @relation(fields: [messageId], references: [id])
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  luAt      DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String
+  payload   Json
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+  absence   Absence? @relation(fields: [absenceId], references: [id])
+  absenceId String?
+}
+
+model Document {
+  id        String  @id @default(cuid())
+  ownerId   String
+  owner     User    @relation(fields: [ownerId], references: [id])
+  classeId  String?
+  classe    Classe? @relation(fields: [classeId], references: [id])
+  titre     String
+  url       String
+  type      String
+  tags      String[]
+}
+
+model Actualite {
+  id          String  @id @default(cuid())
+  titre       String
+  contenu     String
+  audience    AudienceActualite
+  publishedAt DateTime @default(now())
+}
+
+model ReunionPP {
+  id        String @id @default(cuid())
+  classeId  String
+  classe    Classe @relation(fields: [classeId], references: [id])
+  lieu      String
+  date      DateTime
+  slots     Json
+  notes     String?
+}
+
+model JournalAudit {
+  id        String @id @default(cuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
+
+model ParametresEtablissement {
+  id            String @id @default(cuid())
+  nom           String
+  logoUrl       String?
+  couleurs      Json?
+  anneeScolaire String
+  fuseau        String @default('Europe/Paris')
+}
