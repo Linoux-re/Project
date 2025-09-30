@@ -1,0 +1,116 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f7f7fb;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #eef0f8;
+  --fg: #1f2430;
+  --fg-muted: #4a5161;
+  --primary: #2855ff;
+  --primary-strong: #1237c9;
+  --accent: #ff8a3d;
+  --danger: #e34747;
+  --warning: #f2b035;
+  --success: #2f9957;
+  --border: #d8ddee;
+  --shadow-1: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-2: 0 20px 50px rgba(15, 23, 42, 0.12);
+  --radius-sm: 0.4rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.2rem;
+  --transition: 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Noto Sans", sans-serif;
+  --space-2: clamp(0.5rem, 0.35rem + 0.5vw, 0.75rem);
+  --space-3: clamp(0.75rem, 0.5rem + 0.6vw, 1rem);
+  --space-4: clamp(1rem, 0.7rem + 0.8vw, 1.5rem);
+  --space-5: clamp(1.25rem, 0.9rem + 1vw, 1.9rem);
+  --sidebar-width: clamp(240px, 20vw, 280px);
+}
+
+html[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-elevated: #111a34;
+  --bg-subtle: #15213b;
+  --fg: #f1f5ff;
+  --fg-muted: #c1c8e5;
+  --border: rgba(90, 112, 180, 0.36);
+  --shadow-1: 0 10px 24px rgba(5, 9, 22, 0.5);
+  --shadow-2: 0 20px 40px rgba(5, 9, 22, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 2.2vw, 16px);
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover,
+a:focus {
+  color: var(--primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 70%, white 30%);
+  outline-offset: 2px;
+}
+
+body[data-reduced-motion="true"],
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+main {
+  flex: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 20%, transparent 80%);
+}

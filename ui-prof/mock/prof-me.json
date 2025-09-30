@@ -1,0 +1,7 @@
+{
+  "id": 12,
+  "role": "prof",
+  "name": "Mme Martin",
+  "matieres": ["Mathématiques"],
+  "classes": ["5A", "5B"]
+}

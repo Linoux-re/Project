@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cours-1",
+    "classe": "5A",
+    "matiere": "Mathématiques",
+    "debut": "2024-03-25T09:00:00",
+    "fin": "2024-03-25T10:00:00",
+    "eleves": [
+      { "id": 1, "nom": "Alice Dupont", "statut": "P" },
+      { "id": 2, "nom": "Benoît Leroy", "statut": "P" },
+      { "id": 3, "nom": "Camille Martin", "statut": "A" }
+    ]
+  },
+  {
+    "id": "cours-2",
+    "classe": "5B",
+    "matiere": "Mathématiques",
+    "debut": "2024-03-25T11:00:00",
+    "fin": "2024-03-25T12:00:00",
+    "eleves": [
+      { "id": 4, "nom": "David Morel", "statut": "P" },
+      { "id": 5, "nom": "Emma Girard", "statut": "P" },
+      { "id": 6, "nom": "Farah Diallo", "statut": "R" }
+    ]
+  }
+]

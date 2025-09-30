@@ -1,0 +1,18 @@
+[
+  {
+    "classe": "5A",
+    "eleves": [
+      { "id": 1, "nom": "Alice Dupont" },
+      { "id": 2, "nom": "Benoît Leroy" },
+      { "id": 3, "nom": "Camille Martin" }
+    ]
+  },
+  {
+    "classe": "5B",
+    "eleves": [
+      { "id": 4, "nom": "David Morel" },
+      { "id": 5, "nom": "Emma Girard" },
+      { "id": 6, "nom": "Farah Diallo" }
+    ]
+  }
+]

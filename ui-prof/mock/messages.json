@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "categorie": "classe",
+    "objet": "Devoir maison rappel",
+    "aperçu": "N'oubliez pas de rendre le DM Fractions demain.",
+    "date": "2024-03-24T17:45:00"
+  },
+  {
+    "id": 2,
+    "categorie": "parents",
+    "objet": "Réunion parents-professeurs",
+    "aperçu": "Créneaux disponibles le 4 avril...",
+    "date": "2024-03-23T15:20:00"
+  },
+  {
+    "id": 3,
+    "categorie": "equipe",
+    "objet": "Conseil pédagogique",
+    "aperçu": "Ordre du jour du conseil du 30 mars.",
+    "date": "2024-03-22T11:00:00"
+  }
+]

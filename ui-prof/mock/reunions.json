@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "classe": "5A",
+    "debut": "2024-04-04T17:00:00",
+    "fin": "2024-04-04T17:10:00",
+    "parent": "Famille Leroy",
+    "statut": "Confirmé"
+  },
+  {
+    "id": 2,
+    "classe": "5A",
+    "debut": "2024-04-04T17:10:00",
+    "fin": "2024-04-04T17:20:00",
+    "parent": null,
+    "statut": "Libre"
+  },
+  {
+    "id": 3,
+    "classe": "5B",
+    "debut": "2024-04-04T18:00:00",
+    "fin": "2024-04-04T18:10:00",
+    "parent": "Famille Girard",
+    "statut": "Confirmé"
+  }
+]
