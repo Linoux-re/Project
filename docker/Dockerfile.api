@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json pnpm-workspace.yaml .npmrc* .pnpmfile.cjs* ./
+COPY apps ./apps
+COPY packages ./packages
+COPY prisma ./prisma
+RUN corepack enable && pnpm install --frozen-lockfile
+WORKDIR /app/apps/api
+RUN pnpm build
+CMD ["pnpm", "start:prod"]

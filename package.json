@@ -1,0 +1,14 @@
+{
+  "name": "pronote-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@8.15.5",
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "lint": "pnpm -r run lint",
+    "format": "pnpm -r run format",
+    "test": "pnpm -r run test",
+    "db:push": "pnpm --filter api db:push",
+    "db:seed": "pnpm --filter api db:seed"
+  }
+}
